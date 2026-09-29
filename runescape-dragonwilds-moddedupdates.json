@@ -7,5 +7,27 @@
         "UpdateSourceArgs": "1374490",
         "ForceDownloadPlatform": "Windows",
         "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Create Config Directory",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "CreateDirectory",
+        "UpdateSourceArgs": "{{$FullBaseDir}}RSDragonwilds/Saved/Config/WindowsServer"
+    },
+    {
+        "UpdateStageName": "Create Server Config File",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"f=\\\"{{$FullBaseDir}}RSDragonwilds/Saved/Config/WindowsServer/DedicatedServer.ini\\\"; [ -f \\\"$f\\\" ] || echo '[/Script/Dominion.DedicatedServerSettings]' > \\\"$f\\\"\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Create Server Config File",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "cmd.exe",
+        "UpdateSourceArgs": "/c if not exist \"{{$FullBaseDir}}RSDragonwilds\\Saved\\Config\\WindowsServer\\DedicatedServer.ini\" echo [/Script/Dominion.DedicatedServerSettings]>\"{{$FullBaseDir}}RSDragonwilds\\Saved\\Config\\WindowsServer\\DedicatedServer.ini\"",
+        "SkipOnFailure": false
     }
 ]
