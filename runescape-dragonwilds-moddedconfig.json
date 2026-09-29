@@ -92,5 +92,44 @@
     "DefaultValue": "v3.0.1-944-g0196ef29",
     "Placeholder": "v3.0.1-944-g0196ef29",
     "EnumValues": {}
+  },
+  {
+    "DisplayName": "UE4SS Engine Major Version",
+    "Category": "Updates",
+    "Subcategory": "Runtime Configuration:build:3",
+    "InputType": "number",
+    "EnumValues": {},
+    "Description": "Written to [EngineVersionOverride] MajorVersion in ue4ss/UE4SS-settings.ini on update. UE4SS cannot detect the engine version of the RuneScape: Dragonwilds server by itself and stops with \"PS scan timed out\" without it. The server currently runs Unreal Engine 5.6",
+    "Keywords": "ue4ss,engine,version,override,major",
+    "FieldName": "UE4SSEngineMajorVersion",
+    "ParamFieldName": "UE4SSEngineMajorVersion",
+    "DefaultValue": "5"
+  },
+  {
+    "DisplayName": "UE4SS Engine Minor Version",
+    "Category": "Updates",
+    "Subcategory": "Runtime Configuration:build:3",
+    "InputType": "number",
+    "EnumValues": {},
+    "Description": "Written to [EngineVersionOverride] MinorVersion in ue4ss/UE4SS-settings.ini on update. The server currently runs Unreal Engine 5.6",
+    "Keywords": "ue4ss,engine,version,override,minor",
+    "FieldName": "UE4SSEngineMinorVersion",
+    "ParamFieldName": "UE4SSEngineMinorVersion",
+    "DefaultValue": "6"
+  },
+  {
+    "DisplayName": "UE4SS Tick Hooks",
+    "Category": "Updates",
+    "Subcategory": "Runtime Configuration:build:3",
+    "Description": "Sets HookAActorTick, HookEngineTick and HookGameViewportClientTick in ue4ss/UE4SS-settings.ini on update. Disabled by default for server performance, matching the Nexus Mods UE4SS for RSDragonwilds package; ExecuteInGameThread is set to use ProcessEvent so mods that use it keep working. Only enable if a mod specifically needs tick hooks",
+    "Keywords": "ue4ss,hooks,tick,engine,actor,performance",
+    "FieldName": "UE4SSTickHooks",
+    "InputType": "enum",
+    "ParamFieldName": "UE4SSTickHooks",
+    "DefaultValue": "0",
+    "EnumValues": {
+      "0": "Disabled (default)",
+      "1": "Enabled"
+    }
   }
 ]
