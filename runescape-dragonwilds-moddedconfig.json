@@ -63,5 +63,34 @@
     "ParamFieldName": "/Script/Dominion.DedicatedServerSettings.WorldPassword",
     "DefaultValue": "",
     "EnumValues": {}
+  },
+  {
+    "DisplayName": "Install UE Scripting System",
+    "Category": "Updates",
+    "Subcategory": "Runtime Configuration:build:3",
+    "Description": "Sets the action to take when the server is updated. If installing, the [UE4SS-RE experimental build](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental) set in UE4SS Build Version is extracted into RSDragonwilds/Binaries/Win64 (dwmapi.dll plus the ue4ss folder). Existing UE4SS files, including ue4ss/UE4SS-settings.ini and ue4ss/Mods/mods.txt, are not overwritten. CurseForge mods install into RSDragonwilds/Binaries/Win64/ue4ss/Mods",
+    "Keywords": "install,ue4ss,unreal,engine,scripting,system,ue4ss-re,modding,curseforge",
+    "FieldName": "InstallUE4SS",
+    "InputType": "enum",
+    "ParamFieldName": "InstallUE4SS",
+    "DefaultValue": "true",
+    "EnumValues": {
+      "true": "Install UE4SS (default)",
+      "": "Do nothing",
+      "false": "Remove UE4SS files and mods"
+    }
+  },
+  {
+    "DisplayName": "UE4SS Build Version",
+    "Category": "Updates",
+    "Subcategory": "Runtime Configuration:build:3",
+    "Description": "Sets the [UE4SS-RE experimental build](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental) to install when Install UE Scripting System is set to install. The default, v3.0.1-944-g0196ef29, is the build CurseForge installs (it reports itself as Git SHA #0196ef29 in UE4SS.log) for RuneScape: Dragonwilds UE4SS mods. Because existing files are not overwritten, remove UE4SS first when changing builds",
+    "Keywords": "ue4ss,unreal,engine,scripting,system,version,build,experimental",
+    "FieldName": "UE4SSVersion",
+    "InputType": "text",
+    "ParamFieldName": "UE4SSVersion",
+    "DefaultValue": "v3.0.1-944-g0196ef29",
+    "Placeholder": "v3.0.1-944-g0196ef29",
+    "EnumValues": {}
   }
 ]

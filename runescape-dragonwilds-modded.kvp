@@ -1,4 +1,4 @@
-Meta.DisplayName=RuneScape: Dragonwilds (Wine + UE4SS)
+Meta.DisplayName=RuneScape: Dragonwilds - Modded
 Meta.Description=RuneScape: Dragonwilds Dedicated Server, forced onto the Windows binary and run under Wine so UE4SS mods can load. The official native template (runescape-dragonwilds.kvp) launches the native Linux shipping binary directly, which cannot load UE4SS at all.
 Meta.OS=Windows, Linux
 Meta.AarchSupport=Unknown
@@ -30,6 +30,9 @@ Meta.AppIsMultiIPAware=False
 App.DisplayName=RuneScape: Dragonwilds (Wine/UE4SS)
 App.RootDir=./rsdragonwilds/
 App.BaseDirectory=./rsdragonwilds/4019830/
+App.StoresSupported=CurseForge
+App.StoreSpecificSettings={"CurseForgeGameId":"104924"}
+App.StoreDownloadLocations={"CurseForge":"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/ue4ss/Mods"}
 App.SteamWorkshopDownloadLocation=
 App.ExecutableWin=4019830\RSDragonwilds\Binaries\Win64\RSDragonwildsServer-Win64-Shipping.exe
 App.ExecutableLinux=/usr/bin/xvfb-run

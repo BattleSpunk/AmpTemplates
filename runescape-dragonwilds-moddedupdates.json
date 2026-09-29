@@ -9,6 +9,39 @@
         "SkipOnFailure": false
     },
     {
+        "UpdateStageName": "UE4SS Download",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/UE4SS_{{UE4SSVersion}}.zip",
+        "UpdateSourceTarget": "{{$FullBaseDir}}RSDragonwilds/Binaries/Win64",
+        "UnzipUpdateSource": true,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": true,
+        "UpdateSourceConditionSetting": "InstallUE4SS",
+        "UpdateSourceConditionValue": "true",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Remove UE4SS",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "cmd.exe",
+        "UpdateSourceArgs": "/C cd /D \"{{$FullBaseDir}}RSDragonwilds\\Binaries\\Win64\" && del /Q /F dwmapi.dll > NUL 2>&1 & rd /S /Q ue4ss > NUL 2>&1",
+        "UpdateSourceConditionSetting": "InstallUE4SS",
+        "UpdateSourceConditionValue": "false",
+        "SkipOnFailure": true
+    },
+    {
+        "UpdateStageName": "Remove UE4SS",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd \\\"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64\\\" && rm -rf dwmapi.dll ue4ss >/dev/null 2>&1\"",
+        "UpdateSourceConditionSetting": "InstallUE4SS",
+        "UpdateSourceConditionValue": "false",
+        "SkipOnFailure": true
+    },
+    {
         "UpdateStageName": "Create Config Directory",
         "UpdateSourcePlatform": "All",
         "UpdateSource": "CreateDirectory",
