@@ -22,11 +22,43 @@
         "SkipOnFailure": false
     },
     {
+        "UpdateStageName": "UE4SS Server Proxy Download",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://raw.githubusercontent.com/BattleSpunk/AmpTemplates/main/runescape-dragonwilds-modded-files/version.dll",
+        "UpdateSourceArgs": "version.dll",
+        "UpdateSourceTarget": "{{$FullBaseDir}}RSDragonwilds/Binaries/Win64",
+        "OverwriteExistingFiles": true,
+        "UpdateSourceConditionSetting": "InstallUE4SS",
+        "UpdateSourceConditionValue": "true",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Remove Client Proxy",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"rm -f \\\"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/dwmapi.dll\\\"\"",
+        "UpdateSourceConditionSetting": "InstallUE4SS",
+        "UpdateSourceConditionValue": "true",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Remove Client Proxy",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "cmd.exe",
+        "UpdateSourceArgs": "/C if exist \"{{$FullBaseDir}}RSDragonwilds\\Binaries\\Win64\\dwmapi.dll\" del /Q /F \"{{$FullBaseDir}}RSDragonwilds\\Binaries\\Win64\\dwmapi.dll\"",
+        "UpdateSourceConditionSetting": "InstallUE4SS",
+        "UpdateSourceConditionValue": "true",
+        "SkipOnFailure": false
+    },
+    {
         "UpdateStageName": "Remove UE4SS",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "cmd.exe",
-        "UpdateSourceArgs": "/C cd /D \"{{$FullBaseDir}}RSDragonwilds\\Binaries\\Win64\" && del /Q /F dwmapi.dll > NUL 2>&1 & rd /S /Q ue4ss > NUL 2>&1",
+        "UpdateSourceArgs": "/C cd /D \"{{$FullBaseDir}}RSDragonwilds\\Binaries\\Win64\" && del /Q /F dwmapi.dll version.dll > NUL 2>&1 & rd /S /Q ue4ss > NUL 2>&1",
         "UpdateSourceConditionSetting": "InstallUE4SS",
         "UpdateSourceConditionValue": "false",
         "SkipOnFailure": true
@@ -36,7 +68,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd \\\"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64\\\" && rm -rf dwmapi.dll ue4ss >/dev/null 2>&1\"",
+        "UpdateSourceArgs": "-c \"cd \\\"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64\\\" && rm -rf dwmapi.dll version.dll ue4ss >/dev/null 2>&1\"",
         "UpdateSourceConditionSetting": "InstallUE4SS",
         "UpdateSourceConditionValue": "false",
         "SkipOnFailure": true

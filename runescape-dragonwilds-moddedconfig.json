@@ -68,7 +68,7 @@
     "DisplayName": "Install UE Scripting System",
     "Category": "Updates",
     "Subcategory": "Runtime Configuration:build:3",
-    "Description": "Sets the action to take when the server is updated. If installing, the [UE4SS-RE experimental build](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental) set in UE4SS Build Version is extracted into RSDragonwilds/Binaries/Win64 (dwmapi.dll plus the ue4ss folder). Existing UE4SS files, including ue4ss/UE4SS-settings.ini and ue4ss/Mods/mods.txt, are not overwritten. CurseForge mods install into RSDragonwilds/Binaries/Win64/ue4ss/Mods",
+    "Description": "Sets the action to take when the server is updated. If installing, the [UE4SS-RE experimental build](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental) set in UE4SS Build Version is extracted into RSDragonwilds/Binaries/Win64/ue4ss, and a version.dll proxy is installed in place of the client-only dwmapi.dll (the dedicated server does not load dwmapi.dll). Existing UE4SS files, including ue4ss/UE4SS-settings.ini and ue4ss/Mods/mods.txt, are not overwritten. CurseForge mods install into RSDragonwilds/Binaries/Win64/ue4ss/Mods",
     "Keywords": "install,ue4ss,unreal,engine,scripting,system,ue4ss-re,modding,curseforge",
     "FieldName": "InstallUE4SS",
     "InputType": "enum",
