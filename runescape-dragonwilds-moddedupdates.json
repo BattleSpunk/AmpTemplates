@@ -52,7 +52,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"f=\\\"{{$FullBaseDir}}RSDragonwilds/Saved/Config/WindowsServer/DedicatedServer.ini\\\"; [ -f \\\"$f\\\" ] || echo '[/Script/Dominion.DedicatedServerSettings]' > \\\"$f\\\"\"",
+        "UpdateSourceArgs": "-c \"f=\\\"{{$FullBaseDir}}RSDragonwilds/Saved/Config/WindowsServer/DedicatedServer.ini\\\"; [ -f \\\"$f\\\" ] || echo '[/Script/Dominion.DedicatedServerSettings]' > \\\"$f\\\"; for k in OwnerId ServerName DefaultWorldName AdminPassword WorldPassword; do grep -q \\\"^$k=\\\" \\\"$f\\\" || echo \\\"$k=\\\" >> \\\"$f\\\"; done\"",
         "SkipOnFailure": false
     },
     {
@@ -60,7 +60,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "cmd.exe",
-        "UpdateSourceArgs": "/c if not exist \"{{$FullBaseDir}}RSDragonwilds\\Saved\\Config\\WindowsServer\\DedicatedServer.ini\" echo [/Script/Dominion.DedicatedServerSettings]>\"{{$FullBaseDir}}RSDragonwilds\\Saved\\Config\\WindowsServer\\DedicatedServer.ini\"",
+        "UpdateSourceArgs": "/c (if not exist \"{{$FullBaseDir}}RSDragonwilds\\Saved\\Config\\WindowsServer\\DedicatedServer.ini\" echo [/Script/Dominion.DedicatedServerSettings]>\"{{$FullBaseDir}}RSDragonwilds\\Saved\\Config\\WindowsServer\\DedicatedServer.ini\") & for %k in (OwnerId ServerName DefaultWorldName AdminPassword WorldPassword) do @findstr /b /c:\"%k=\" \"{{$FullBaseDir}}RSDragonwilds\\Saved\\Config\\WindowsServer\\DedicatedServer.ini\" >nul || (echo %k=)>>\"{{$FullBaseDir}}RSDragonwilds\\Saved\\Config\\WindowsServer\\DedicatedServer.ini\"",
         "SkipOnFailure": false
     }
 ]
