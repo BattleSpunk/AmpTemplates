@@ -74,6 +74,22 @@
         "SkipOnFailure": false
     },
     {
+        "UpdateStageName": "PlayerCapTen Player Limit",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"f=\\\"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/ue4ss/Mods/PlayerCapTen/Scripts/main.lua\\\"; [ -f \\\"$f\\\" ] && sed -i -E 's/^(local PlayerCap *= *)[0-9]+/\\1{{$MaxUsers}}/' \\\"$f\\\"; exit 0\"",
+        "SkipOnFailure": true
+    },
+    {
+        "UpdateStageName": "PlayerCapTen Player Limit",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -ExecutionPolicy Bypass -Command \"$f='{{$FullBaseDir}}RSDragonwilds\\Binaries\\Win64\\ue4ss\\Mods\\PlayerCapTen\\Scripts\\main.lua'; if (Test-Path -LiteralPath $f) { (Get-Content -LiteralPath $f) -replace '^(local PlayerCap\\s*=\\s*)\\d+','${1}{{$MaxUsers}}' | Set-Content -LiteralPath $f }\"",
+        "SkipOnFailure": true
+    },
+    {
         "UpdateStageName": "Remove UE4SS",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",

@@ -65,6 +65,21 @@
     "EnumValues": {}
   },
   {
+    "DisplayName": "Player Limit",
+    "Category": "RuneScape Dragonwilds:stadia_controller",
+    "Subcategory": "Server:dns:1",
+    "Description": "Sets the maximum number of players AMP reports and tracks for the server. The game itself allows 6; raising this only has an effect in-game if a mod lifts the game's player cap. If the PlayerCapTen UE4SS mod is installed, this value is also written to its PlayerCap in ue4ss/Mods/PlayerCapTen/Scripts/main.lua when the server is updated (run Update after changing it). Players joining must use the same PlayerCap value in their own copy of the mod",
+    "Keywords": "max,players,slots,limit,maxusers",
+    "FieldName": "$MaxUsers",
+    "InputType": "number",
+    "MinValue": "1",
+    "ParamFieldName": "MaxUsers",
+    "DefaultValue": "6",
+    "Placeholder": "6",
+    "Suffix": "players",
+    "EnumValues": {}
+  },
+  {
     "DisplayName": "Install UE Scripting System",
     "Category": "Updates",
     "Subcategory": "Runtime Configuration:build:3",
