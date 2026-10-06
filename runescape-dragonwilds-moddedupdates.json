@@ -58,7 +58,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"sed -i -E 's/^(MajorVersion *=)[^\\r]*/\\1 {{UE4SSEngineMajorVersion}}/; s/^(MinorVersion *=)[^\\r]*/\\1 {{UE4SSEngineMinorVersion}}/; s/^(HookAActorTick *=)[^\\r]*/\\1 {{UE4SSTickHooks}}/; s/^(HookEngineTick *=)[^\\r]*/\\1 {{UE4SSTickHooks}}/; s/^(HookGameViewportClientTick *=)[^\\r]*/\\1 {{UE4SSTickHooks}}/; s/^(DefaultExecuteInGameThreadMethod *=)[^\\r]*/\\1 ProcessEvent/' \\\"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/ue4ss/UE4SS-settings.ini\\\"\"",
+        "UpdateSourceArgs": "-c \"sed -i -E 's/^(MajorVersion *=)[^\\r]*/\\1 {{UE4SSEngineMajorVersion}}/; s/^(MinorVersion *=)[^\\r]*/\\1 {{UE4SSEngineMinorVersion}}/; s/^(HookAActorTick *=)[^\\r]*/\\1 {{UE4SSTickHooks}}/; s/^(HookEngineTick *=)[^\\r]*/\\1 1/; s/^(HookGameViewportClientTick *=)[^\\r]*/\\1 {{UE4SSTickHooks}}/; s/^(DefaultExecuteInGameThreadMethod *=)[^\\r]*/\\1 ProcessEvent/' \\\"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/ue4ss/UE4SS-settings.ini\\\"\"",
         "UpdateSourceConditionSetting": "InstallUE4SS",
         "UpdateSourceConditionValue": "true",
         "SkipOnFailure": false
@@ -68,7 +68,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -ExecutionPolicy Bypass -Command \"$f='{{$FullBaseDir}}RSDragonwilds\\Binaries\\Win64\\ue4ss\\UE4SS-settings.ini'; (Get-Content -LiteralPath $f) -replace '^MajorVersion\\s*=.*','MajorVersion = {{UE4SSEngineMajorVersion}}' -replace '^MinorVersion\\s*=.*','MinorVersion = {{UE4SSEngineMinorVersion}}' -replace '^HookAActorTick\\s*=.*','HookAActorTick = {{UE4SSTickHooks}}' -replace '^HookEngineTick\\s*=.*','HookEngineTick = {{UE4SSTickHooks}}' -replace '^HookGameViewportClientTick\\s*=.*','HookGameViewportClientTick = {{UE4SSTickHooks}}' -replace '^DefaultExecuteInGameThreadMethod\\s*=.*','DefaultExecuteInGameThreadMethod = ProcessEvent' | Set-Content -LiteralPath $f\"",
+        "UpdateSourceArgs": "-NoProfile -ExecutionPolicy Bypass -Command \"$f='{{$FullBaseDir}}RSDragonwilds\\Binaries\\Win64\\ue4ss\\UE4SS-settings.ini'; (Get-Content -LiteralPath $f) -replace '^MajorVersion\\s*=.*','MajorVersion = {{UE4SSEngineMajorVersion}}' -replace '^MinorVersion\\s*=.*','MinorVersion = {{UE4SSEngineMinorVersion}}' -replace '^HookAActorTick\\s*=.*','HookAActorTick = {{UE4SSTickHooks}}' -replace '^HookEngineTick\\s*=.*','HookEngineTick = 1' -replace '^HookGameViewportClientTick\\s*=.*','HookGameViewportClientTick = {{UE4SSTickHooks}}' -replace '^DefaultExecuteInGameThreadMethod\\s*=.*','DefaultExecuteInGameThreadMethod = ProcessEvent' | Set-Content -LiteralPath $f\"",
         "UpdateSourceConditionSetting": "InstallUE4SS",
         "UpdateSourceConditionValue": "true",
         "SkipOnFailure": false

@@ -136,7 +136,7 @@
     "DisplayName": "UE4SS Tick Hooks",
     "Category": "Updates",
     "Subcategory": "Runtime Configuration:build:3",
-    "Description": "Sets HookAActorTick, HookEngineTick and HookGameViewportClientTick in ue4ss/UE4SS-settings.ini on update. Disabled by default for server performance, matching the Nexus Mods UE4SS for RSDragonwilds package; ExecuteInGameThread is set to use ProcessEvent so mods that use it keep working. Only enable if a mod specifically needs tick hooks",
+    "Description": "Sets HookAActorTick and HookGameViewportClientTick in ue4ss/UE4SS-settings.ini on update. Disabled by default for server performance. HookEngineTick is always kept enabled: UE4SS needs it to find the game thread, and without it mods that call LoadAsset fail with \"GetGameThreadId called too early\". Only enable if a mod specifically needs actor or viewport tick hooks",
     "Keywords": "ue4ss,hooks,tick,engine,actor,performance",
     "FieldName": "UE4SSTickHooks",
     "InputType": "enum",
