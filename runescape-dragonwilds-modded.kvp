@@ -42,7 +42,7 @@ App.WindowsCommandLineArgs=
 App.CommandLineArgs={{$PlatformArgs}} RSDragonwilds -Port={{$GamePort}} {{$FormattedArgs}} -stdout -FullStdOutLogOutput
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
-App.EnvironmentVariables={"SteamAppId":"1374490","WINEPREFIX":"{{$FullRootDir}}.wine","WINEARCH":"win64","WINEDEBUG":"err+all","WINEDLLOVERRIDES":"version=n,b;mscoree=;mshtml="}
+App.EnvironmentVariables={"SteamAppId":"1374490","WINEPREFIX":"{{$FullRootDir}}.wine","WINEARCH":"win64","WINEDEBUG":"-all","WINEDLLOVERRIDES":"version=n,b;mscoree=;mshtml="}
 App.CommandLineParameterFormat=-{0}={1}
 App.CommandLineParameterDelimiter=
 App.ExitMethod=OS_CLOSE
