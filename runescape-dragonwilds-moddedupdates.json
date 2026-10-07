@@ -9,6 +9,14 @@
         "SkipOnFailure": false
     },
     {
+        "UpdateStageName": "Fix UE4SS Folder Permissions",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"d=\\\"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/ue4ss\\\"; [ -d \\\"$d\\\" ] && chmod -R u+rwX \\\"$d\\\"; exit 0\"",
+        "SkipOnFailure": true
+    },
+    {
         "UpdateStageName": "Remove Old UE4SS Build",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
