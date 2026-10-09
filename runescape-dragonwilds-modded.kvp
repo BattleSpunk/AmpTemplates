@@ -39,7 +39,7 @@ App.ExecutableLinux=/usr/bin/xvfb-run
 App.WorkingDir=4019830
 App.LinuxCommandLineArgs=-a wine "./RSDragonwilds/Binaries/Win64/RSDragonwildsServer-Win64-Shipping.exe"
 App.WindowsCommandLineArgs=
-App.CommandLineArgs={{$PlatformArgs}} RSDragonwilds -Port={{$GamePort}} {{$FormattedArgs}} -stdout -FullStdOutLogOutput
+App.CommandLineArgs={{$PlatformArgs}} RSDragonwilds -Port={{$GamePort}} {{$FormattedArgs}} -stdout -FullStdOutLogOutput -unattended {{CustomCommandLineArgs}}
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
 App.EnvironmentVariables={"SteamAppId":"1374490","WINEPREFIX":"{{$FullRootDir}}.wine","WINEARCH":"win64","WINEDEBUG":"-all","WINEDLLOVERRIDES":"version=n,b;mscoree=;mshtml="}

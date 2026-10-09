@@ -80,6 +80,18 @@
     "EnumValues": {}
   },
   {
+    "DisplayName": "Custom Command Line Arguments",
+    "Category": "RuneScape Dragonwilds:stadia_controller",
+    "Subcategory": "Server:dns:1",
+    "Description": "Extra arguments added to the end of the server command line, separated by spaces (for example -TaskGraphThreads=4). Leave empty for none. Wrong arguments can stop the server from starting; clear this field if it no longer starts",
+    "Keywords": "custom,command,line,arguments,args,launch,parameters",
+    "FieldName": "CustomCommandLineArgs",
+    "InputType": "text",
+    "ParamFieldName": "CustomCommandLineArgs",
+    "DefaultValue": "",
+    "EnumValues": {}
+  },
+  {
     "DisplayName": "Install UE Scripting System",
     "Category": "Updates",
     "Subcategory": "Runtime Configuration:build:3",
