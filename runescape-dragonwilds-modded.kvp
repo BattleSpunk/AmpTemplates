@@ -1,9 +1,9 @@
-Meta.DisplayName=RuneScape: Dragonwilds - Modded
-Meta.Description=RuneScape: Dragonwilds Dedicated Server, forced onto the Windows binary and run under Wine so UE4SS mods can load. The official native template (runescape-dragonwilds.kvp) launches the native Linux shipping binary directly, which cannot load UE4SS at all.
+Meta.DisplayName=RuneScape: Dragonwilds - Modded (Proton TEST)
+Meta.Description=RuneScape: Dragonwilds Dedicated Server, forced onto the Windows binary and run under Proton GE so UE4SS mods can load. The official native template (runescape-dragonwilds.kvp) launches the native Linux shipping binary directly, which cannot load UE4SS at all.
 Meta.OS=Windows, Linux
 Meta.AarchSupport=Unknown
 Meta.Arch=x86_64
-Meta.Author=Greelan (original), BattleSpunk/Claude (Wine/UE4SS conversion)
+Meta.Author=Greelan (original), BattleSpunk/Claude (Proton/UE4SS conversion)
 Meta.URL=https://dragonwilds.runescape.com/
 Meta.DisplayImageSource=url:https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1374490/d0c222ee8a08f20eacf8a28fe8feb6c378433281/header.jpg?t=1774967430
 Meta.EndpointURIFormat=
@@ -11,11 +11,11 @@ Meta.ConfigManifest=runescape-dragonwilds-moddedconfig.json
 Meta.MetaConfigManifest=runescape-dragonwilds-moddedmetaconfig.json
 Meta.ConfigRoot=runescape-dragonwilds-modded.kvp
 Meta.MinAMPVersion=2.6.0.8
-Meta.SpecificDockerImage=cubecoders/ampbase:wine-stable
+Meta.SpecificDockerImage=cubecoders/ampbase:debian
 Meta.DockerRequired=False
 Meta.DockerBaseReadOnly=False
 Meta.ContainerPolicy=SupportedOnWindows, RecommendedOnLinux
-Meta.ContainerPolicyReason=The server is forced onto the Windows binary and run under Wine (ideally latest stable from winehq.org) and Xvfb so UE4SS - a Windows DLL - can load. The native Linux shipping binary used by the official template cannot load UE4SS at all. Using the ampbase:wine-stable image avoids installing Wine/Xvfb on the host.
+Meta.ContainerPolicyReason=The server is forced onto the Windows binary and run under Proton GE (downloaded by an update stage) so UE4SS - a Windows DLL - can load. The native Linux shipping binary used by the official template cannot load UE4SS at all. Proton GE uses fsync/esync, which cuts the cost of the Unreal game thread's synchronisation calls compared to wine-stable.
 Meta.ExtraSetupStepsURI=
 Meta.Prerequisites=[]
 Meta.ExtraContainerPackages=[]
@@ -24,10 +24,10 @@ Meta.NoCommercialUsage=False
 Meta.ConfigVersion=1
 Meta.ReleaseNotes=
 Meta.BreakingReleaseNotes=
-Meta.AppConfigId=f3b46437-6928-4fc3-8646-62e4a43cd2fd
+Meta.AppConfigId=3a69dfda-d198-496e-b27a-bee52751c7c1
 Meta.ImportableExtensions=[".ini"]
 Meta.AppIsMultiIPAware=False
-App.DisplayName=RuneScape: Dragonwilds - Modded
+App.DisplayName=RuneScape: Dragonwilds - Modded (Proton TEST)
 App.RootDir=./rsdragonwilds/
 App.BaseDirectory=./rsdragonwilds/4019830/
 App.StoresSupported=CurseForge
@@ -35,14 +35,14 @@ App.StoreSpecificSettings={"CurseForgeGameId":"104924"}
 App.StoreDownloadLocations={"CurseForge":"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/ue4ss/Mods"}
 App.SteamWorkshopDownloadLocation=
 App.ExecutableWin=4019830\RSDragonwilds\Binaries\Win64\RSDragonwildsServer-Win64-Shipping.exe
-App.ExecutableLinux=/usr/bin/xvfb-run
+App.ExecutableLinux=.proton/proton
 App.WorkingDir=4019830
-App.LinuxCommandLineArgs=-a wine "./RSDragonwilds/Binaries/Win64/RSDragonwildsServer-Win64-Shipping.exe"
+App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/RSDragonwildsServer-Win64-Shipping.exe"
 App.WindowsCommandLineArgs=
 App.CommandLineArgs={{$PlatformArgs}} RSDragonwilds -Port={{$GamePort}} {{$FormattedArgs}} -stdout -FullStdOutLogOutput -unattended {{CustomCommandLineArgs}}
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
-App.EnvironmentVariables={"SteamAppId":"1374490","WINEPREFIX":"{{$FullRootDir}}.wine","WINEARCH":"win64","WINEDEBUG":"-all","WINEDLLOVERRIDES":"version=n,b;mscoree=;mshtml="}
+App.EnvironmentVariables={"SteamAppId":"1374490","STEAM_COMPAT_DATA_PATH":"{{$FullRootDir}}.proton/compatdata","STEAM_COMPAT_CLIENT_INSTALL_PATH":"{{$FullBaseDir}}.steam/steam","HOME":"{{$FullBaseDir}}","WINEDLLOVERRIDES":"version=n,b;mscoree=;mshtml="}
 App.CommandLineParameterFormat=-{0}={1}
 App.CommandLineParameterDelimiter=
 App.ExitMethod=OS_CLOSE
@@ -94,7 +94,7 @@ App.RapidStartup=False
 App.SmartExcludeExemptions=[".cfg",".conf",".config",".ini",".json",".xml",".properties",".kvp",".yml",".yaml",".toml",".lua"]
 App.SmartExcludeSupported=True
 App.DumpFullChildProcessTree=False
-App.MonitorChildProcessName=^.*RSDragonwildsServer-Win64-Shipping\.exe.*-Port={{$GamePort}}.*$
+App.MonitorChildProcessName=^(?!.*(runinprefix|steam\.exe)).*RSDragonwildsServer-Win64-Shipping\.exe.*-Port={{$GamePort}}.*$
 App.MonitorDirectChildOnly=False
 App.SupportsUniversalSleep=False
 App.UseSteamQueryForStatus=False
