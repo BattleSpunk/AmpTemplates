@@ -15,7 +15,7 @@ Meta.SpecificDockerImage=cubecoders/ampbase:debian
 Meta.DockerRequired=False
 Meta.DockerBaseReadOnly=False
 Meta.ContainerPolicy=SupportedOnWindows, RecommendedOnLinux
-Meta.ContainerPolicyReason=The server is forced onto the Windows binary and run under Proton GE (downloaded by an update stage) so UE4SS - a Windows DLL - can load. The native Linux shipping binary used by the official template cannot load UE4SS at all. Proton GE uses fsync/esync, which cuts the cost of the Unreal game thread's synchronisation calls compared to wine-stable.
+Meta.ContainerPolicyReason=The server is forced onto the Windows binary and run under Proton GE (downloaded by an update stage) so UE4SS - a Windows DLL - can load. The native Linux shipping binary used by the official template cannot load UE4SS at all. The server is launched with Proton GE's own wine binary (not the proton script, whose start.exe launch loses the game's stdout that AMP's console needs). Proton GE 10 uses fsync/esync, which cuts the cost of the Unreal game thread's synchronisation calls compared to wine-stable.
 Meta.ExtraSetupStepsURI=
 Meta.Prerequisites=[]
 Meta.ExtraContainerPackages=[]
@@ -35,14 +35,14 @@ App.StoreSpecificSettings={"CurseForgeGameId":"104924"}
 App.StoreDownloadLocations={"CurseForge":"{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/ue4ss/Mods"}
 App.SteamWorkshopDownloadLocation=
 App.ExecutableWin=4019830\RSDragonwilds\Binaries\Win64\RSDragonwildsServer-Win64-Shipping.exe
-App.ExecutableLinux=.proton/proton
+App.ExecutableLinux=.proton/files/bin/wine
 App.WorkingDir=4019830
-App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/RSDragonwildsServer-Win64-Shipping.exe"
+App.LinuxCommandLineArgs="{{$FullBaseDir}}RSDragonwilds/Binaries/Win64/RSDragonwildsServer-Win64-Shipping.exe"
 App.WindowsCommandLineArgs=
 App.CommandLineArgs={{$PlatformArgs}} RSDragonwilds -Port={{$GamePort}} {{$FormattedArgs}} -stdout -FullStdOutLogOutput -unattended {{CustomCommandLineArgs}}
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
-App.EnvironmentVariables={"SteamAppId":"1374490","STEAM_COMPAT_DATA_PATH":"{{$FullRootDir}}.proton/compatdata","STEAM_COMPAT_CLIENT_INSTALL_PATH":"{{$FullBaseDir}}.steam/steam","HOME":"{{$FullBaseDir}}","WINEDLLOVERRIDES":"version=n,b;mscoree=;mshtml="}
+App.EnvironmentVariables={"SteamAppId":"1374490","HOME":"{{$FullBaseDir}}","WINEPREFIX":"{{$FullRootDir}}.proton/compatdata/pfx","WINESERVER":"{{$FullRootDir}}.proton/files/bin/wineserver","WINEDLLPATH":"{{$FullRootDir}}.proton/files/lib/vkd3d:{{$FullRootDir}}.proton/files/lib/wine","LD_LIBRARY_PATH":"{{$FullRootDir}}.proton/files/lib/x86_64-linux-gnu:{{$FullRootDir}}.proton/files/lib/i386-linux-gnu","WINEESYNC":"1","WINEFSYNC":"1","WINEDEBUG":"-all","WINEDLLOVERRIDES":"version=n,b;mscoree=;mshtml=;winebth.sys=d"}
 App.CommandLineParameterFormat=-{0}={1}
 App.CommandLineParameterDelimiter=
 App.ExitMethod=OS_CLOSE

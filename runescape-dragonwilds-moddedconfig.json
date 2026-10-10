@@ -111,13 +111,13 @@
     "DisplayName": "Proton GE Release Version (Linux)",
     "Category": "Updates",
     "Subcategory": "Runtime Configuration:build:3",
-    "Description": "Sets the Proton GE [release version](https://github.com/GloriousEggroll/proton-ge-custom/releases) to install. Empty = latest. Example: GE-Proton11-7. Changing it and running Update recreates the Proton prefix; saves and DedicatedServer.ini are in the game folder and are kept",
+    "Description": "Sets the Proton GE [release version](https://github.com/GloriousEggroll/proton-ge-custom/releases) to install. Empty = latest. Default GE-Proton10-34: GE-Proton 11 has no esync/fsync, so the server falls back to slow server-side synchronisation. Changing it and running Update recreates the Proton prefix; saves and DedicatedServer.ini are in the game folder and are kept",
     "Keywords": "proton,release,version,wine",
     "FieldName": "SpecificReleaseVersion",
     "InputType": "text",
     "ParamFieldName": "SpecificReleaseVersion",
-    "DefaultValue": "",
-    "Placeholder": "GE-Proton11-7",
+    "DefaultValue": "GE-Proton10-34",
+    "Placeholder": "GE-Proton10-34",
     "EnumValues": {}
   },
   {
