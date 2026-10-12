@@ -37,7 +37,7 @@ App.SteamWorkshopDownloadLocation=
 App.ExecutableWin=4019830\RSDragonwilds\Binaries\Win64\RSDragonwildsServer-Win64-Shipping.exe
 App.ExecutableLinux=/bin/bash
 App.WorkingDir=4019830
-App.LinuxCommandLineArgs=-c "L=RSDragonwilds/Saved/Logs/RSDragonwilds.log; [ -f $L ] && mv -f $L RSDragonwilds/Saved/Logs/RSDragonwilds-backup-$(date -Is).log; {{$FullRootDir}}.proton/files/bin/wine {{$FullBaseDir}}RSDragonwilds/Binaries/Win64/RSDragonwildsServer-Win64-Shipping.exe $@ & W=$!; tail -n +1 -F --pid=$W $L 2>/dev/null; wait $W" rsdragonwilds
+App.LinuxCommandLineArgs=-c "T=$(date -Is); L=RSDragonwilds/Saved/Logs/RSDragonwilds.log; [ -f $L ] && mv -f $L RSDragonwilds/Saved/Logs/RSDragonwilds-backup-$T.log; U=RSDragonwilds/Binaries/Win64/ue4ss; [ -f $U/UE4SS.log ] && mv -f $U/UE4SS.log $U/UE4SS-backup-$T.log; ls -1t $U/UE4SS-backup-*.log 2>/dev/null | tail -n +31 | xargs -r rm -f;{{$FullRootDir}}.proton/files/bin/wine {{$FullBaseDir}}RSDragonwilds/Binaries/Win64/RSDragonwildsServer-Win64-Shipping.exe $@ & W=$!; tail -n +1 -F --pid=$W $L 2>/dev/null; wait $W" rsdragonwilds
 App.WindowsCommandLineArgs=
 App.CommandLineArgs={{$PlatformArgs}} RSDragonwilds -Port={{$GamePort}} {{$FormattedArgs}} -stdout -FullStdOutLogOutput -unattended {{CustomCommandLineArgs}}
 App.UseLinuxIOREDIR=False
